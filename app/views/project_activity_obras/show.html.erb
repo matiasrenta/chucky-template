@@ -1,0 +1,131 @@
+<section id="widget-grid">
+  <div class="row">
+  <article class="col-sm-6">
+    <div id="wid-id-0" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" class="jarviswidget jarviswidget-color-darken">
+      <header><span class="widget-icon"><i class="fa fa-binoculars"></i></span>
+        <div class="widget-toolbar">
+          <%= link_to raw("<i class='fa fa-arrow-left'></i> #{t('simple_form.buttons.list')}"), project_path(@key_analytical), class: 'btn btn-primary' %>
+          <%= link_to raw("<i class='fa fa-pencil'></i> #{t('simple_form.buttons.edit')}"), edit_project_activity_obra_path(@project_activity_obra), class: 'btn btn-primary' if can?(:update, ProjectActivityObra) %>
+        </div>
+      </header>
+      <div class="no-padding">
+        <!-- widget content -->
+        <div class="widget-body">
+
+          <div class="form-group">
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.name') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.name %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.description') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.description %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.calle') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.calle %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.nro_exterior') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.nro_exterior %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.nro_interior') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.nro_interior %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.colonia') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.colonia %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.codigo_postal') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.codigo_postal %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.tipo_obra') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.tipo_obra %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.cantidad') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.cantidad %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.avance_programado') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.avance_programado %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.avance_real') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.avance_real %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.real_start_date') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.real_start_date %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.real_end_date') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.real_end_date %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.latitude') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.latitude %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.longitude') %></strong></label>
+              <div class="col-lg-9 details-data"><%= @project_activity_obra.longitude %></div>
+            </div>
+
+            <div class="row show-details">
+              <label class="col-lg-3 col-md-4 control-label"><strong><%= t('simple_form.labels.defaults.ejercido') %></strong></label>
+              <div class="col-lg-9 details-data"><%= number_to_currency(@project_activity_obra.ejercido, unit: '') %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="col-sm-6">
+    <div id="wid-id-2" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" class="jarviswidget jarviswidget-color-darken">
+      <header><span class="widget-icon"><i class="fa fa-binoculars"></i></span>
+      </header>
+      <div class="no-padding">
+        <!-- widget content -->
+        <div class="widget-body">
+          <div id="map" style='width: 100%; height: 460px;'></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+  <%= render 'shared/show_financial_doc_in_project_activity', locals: {instance: @project_activity_obra, new_path: new_project_activity_obra_financial_document_path(@project_activity_obra)} %>
+
+</section>
+
+
+<script data-no-turbolink="true">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(16);
+  });
+  $('.show-details:even').addClass('striped-div');
+</script>
