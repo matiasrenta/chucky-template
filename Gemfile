@@ -149,7 +149,8 @@ gem 'attribute_normalizer' #proyecto_inversion en key_analytical se cambia de ni
 # gem 'unicorn'
 
 group :development do
-  gem 'capistrano', '~> 3.1.0'
+  #gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano', '~> 3.7.0'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.6'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
@@ -168,4 +169,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'letter_opener'
+end
+
+group :production do
+  gem 'puma', '4.3.1'
 end

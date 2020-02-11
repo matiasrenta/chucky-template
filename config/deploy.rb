@@ -1,16 +1,16 @@
 # config valid only for Capistrano 3.1
-lock '3.1.0'
+lock '3.7.0'
 
 require 'seed-fu/capistrano3'
 
-set :application, 'cuauh'
-set :repo_url, 'git@github.com:matiasrenta/cuauh.git'
+set :application, 'chucky-template'
+set :repo_url, 'git@github.com:matiasrenta/chucky-template.git'
 
 # Default branch is :master
 #ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/deployer/railsapps/cuauh'
+set :deploy_to, '/home/deployer/railsapps/chucky-template'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -23,6 +23,16 @@ set :deploy_to, '/home/deployer/railsapps/cuauh'
 
 # Default value for :pty is false
 # set :pty, true
+
+
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+#set :rbenv_ruby, '2.3.1'
+set :rbenv_ruby, File.read('.ruby-version').strip
+
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+#set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+#set :rbenv_roles, :all # default value
+
 
 # para que bundle no interfiera con el directorio bin/ de esta forma se baja del github lo que haya en el bin (ademas lo quite del linked_dirs)
 set :bundle_binstubs, nil
