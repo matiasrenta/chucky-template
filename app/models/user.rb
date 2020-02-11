@@ -1,7 +1,6 @@
 require 'valid_email'
 
 class User < ActiveRecord::Base
-  has_many :verifications, as: :verification_owneable, dependent: :restrict_with_error
   acts_as_messageable
   #acts_as_paranoid
   include PublicActivity::Model
@@ -31,10 +30,9 @@ class User < ActiveRecord::Base
 
   after_destroy :remove_file
 
-  delegate :superuser?, :ejecutor_adquisicion?, :ejecutor_nomina?, :ejecutor_obra?, :ejecutor_social?, to: :role
+  delegate :superuser?, to: :role
 
   scope :less_superusers, -> {where.not(role_id: Role.superuser.id)}
-  scope :revisores, -> {where(role_id: Role.revisor.id)}
   scope :actives, -> {where('deleted_at IS NULL')}
 
   def active?
@@ -60,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def except_attr_in_public_activity
-    [:id, :remember_created_at, :updated_at, :last_sign_in_at, :current_sign_in_at, :sign_in_count, :current_sign_in_ip, :last_sign_in_ip, :failed_attempts, :unlock_token, :locked_at, :reset_password_token, :reset_password_sent_at, :last_seen_at, :deleted_at, :avatar_id, :avatar_size, :viewing_year]
+    [:id, :remember_created_at, :updated_at, :last_sign_in_at, :current_sign_in_at, :sign_in_count, :current_sign_in_ip, :last_sign_in_ip, :failed_attempts, :unlock_token, :locked_at, :reset_password_token, :reset_password_sent_at, :last_seen_at, :deleted_at, :avatar_id, :avatar_size]
   end
 
   def active_for_authentication?

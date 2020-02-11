@@ -1,2 +1,0 @@
-module CatPprParPartidaGenericasHelper
-end

@@ -19,20 +19,14 @@ module PublicActivityHelper
   end
 
   def keyables
-    [[t('helpers.select.create'), 'create'], [t('helpers.select.update'), 'update'], [t('helpers.select.destroy'), 'destroy'], ['Afectación presupuestal', 'afectacion']]
+    [[t('helpers.select.create'), 'create'], [t('helpers.select.update'), 'update'], [t('helpers.select.destroy'), 'destroy'], [t('helpers.select.inactivate'), 'inactivate']]
   end
 
   def trackable_label(activity, with_not_exists = true)
     label = activity.parameters[:model_label]
     if activity.trackable
       if can?(:read, activity.trackable)
-        if activity.trackable.class.name.start_with?('FinancialDocument')
-          link_to label, activity.trackable.becomes(FinancialDocument)
-        elsif KeyAnalytical.project_types.include?(activity.trackable.class.name)
-          link_to label, activity.trackable.becomes(KeyAnalytical)
-        else
-          link_to label, activity.trackable
-        end
+        link_to label, activity.trackable
       else
         label
       end
@@ -40,6 +34,7 @@ module PublicActivityHelper
       with_not_exists ? "#{label} <em>(ya no existe)</em>".html_safe : label
     end
   end
+
 
   def trackable_history(activity)
     "/public_activity?q[trackable_type_eq]=#{activity.trackable_type}&q[trackable_id_eq]=#{activity.trackable_id}"
