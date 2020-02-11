@@ -16,6 +16,11 @@ Sett.seed_once(:var) do |s|
   s.description = 'if not true, los delay jobs se ejecutan real time, sino se encolan (tambien dependen del RAILS_ENV. ver initializer/delayed_job_config.rb)'
 end
 
+Sett.seed_once(:var) do |s|
+  s.var = 'WEBSITE_TITLE'
+  s.value = 'Chucky'
+  s.description = 'El titulo que muestra el navegador. Esta en layouts/header.erb'
+end
 
 
 
