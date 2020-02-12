@@ -3,6 +3,13 @@ SSH to chucky_droplet
 ssh root@138.197.74.226
 
 
+RECORDATORIO:
+Antes de olvidar, recordar como usar Bundler. Recordar que chucky se hizo con: bundle package --all --all-platforms
+por lo tanto se debería deployar usando: bundle install --local, esto haria que todos los gem se instalaran solamente
+desde vendor/cache. Esto nos garantiza consistencia en el codigo. No se si Capistrano deploya usando bundle install --local
+pero debería hacerlo así, sino cambiar capistrano para que lo haga.
+para mas info ver: https://bundler.io/man/bundle-package.1.html
+
 
 Crear User deployer
 ===================
@@ -216,8 +223,22 @@ https://www.ssllabs.com/ssltest/analyze.html?d=sys.dogstribuidora.ga
 (+) Puma as a service SystemD
 
 links importantes:
+
+github: https://github.com/puma/puma
+
+links para systemd:
+   https://github.com/puma/puma/blob/master/docs/systemd.md
+   https://prograils.com/posts/capistrano-deploy-to-ubuntu-with-systemd-nginx-puma-and-rbenv
+
+links para usarlo con capistrano:
+   https://prograils.com/posts/capistrano-deploy-to-ubuntu-with-systemd-nginx-puma-and-rbenv
+
 https://medium.com/@damuz91/setting-up-puma-as-a-service-in-systemd-in-ubuntu-18-9d2c1fe774e4
 https://github.com/puma/puma/blob/master/docs/systemd.md
+
+este link explica mucho, es una escuela en Eroku: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#adding-puma-to-your-application
+
+
 
 archivos importantes:
 /etc/systemd/system/puma.service

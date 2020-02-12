@@ -1,3 +1,5 @@
+ruby File.read(File.expand_path('../.ruby-version', __FILE__)).chomp
+
 #require 'refile/simple_form'
 
 source 'https://rubygems.org'
