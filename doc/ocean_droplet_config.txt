@@ -241,15 +241,15 @@ este link explica mucho, es una escuela en Eroku: https://devcenter.heroku.com/a
 
 
 archivos importantes:
-/etc/systemd/system/puma.service
+/etc/systemd/system/puma-chucky-template.service
 depues de modificar este archivo hacer:
 sudo systemctl daemon-reload
 
 para start, stop, restart puma:
-sudo service puma start
-sudo service puma stop
-sudo service puma restart
-sudo service puma status
+sudo service puma-chucky-template start
+sudo service puma-chucky-template stop
+sudo service puma-chucky-template restart
+sudo service puma-chucky-template status
 
 para ver los procesos de puma:
 ps aux | grep puma

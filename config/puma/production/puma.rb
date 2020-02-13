@@ -1,5 +1,5 @@
 # Change to match your CPU core count
-workers 1
+workers 2
 
 # Min and Max threads per worker
 threads 1, 2
@@ -18,7 +18,7 @@ stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.std
 pidfile "#{shared_dir}/pids/puma.pid"
 state_path "#{shared_dir}/pids/puma.state"
 
-preload_app!
+#preload_app!
 
 # Set up socket location
 bind "unix://#{shared_dir}/sockets/puma.sock"

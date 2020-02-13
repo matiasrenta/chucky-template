@@ -11,11 +11,11 @@ User=deployer
 Environment=RAILS_ENV=production
 WorkingDirectory=/home/deployer/railsapps/chucky-template/current/
 
-ExecStart=/home/deployer/.rbenv/bin/rbenv exec bundle exec puma -C /home/deployer/railsapps/chucky-template/current/config/production/puma.rb
+ExecStart=/home/deployer/.rbenv/bin/rbenv exec bundle exec puma -C /home/deployer/railsapps/chucky-template/current/config/puma/production/puma.rb
 
-ExecStop=/home/deployer/.rbenv/bin/rbenv exec bundle exec pumactl -F /home/deployer/railsapps/chucky-template/current/config/production/puma.rb stop
+ExecStop=/home/deployer/.rbenv/bin/rbenv exec bundle exec pumactl -F /home/deployer/railsapps/chucky-template/current/config/puma/production/puma.rb stop
 
-ExecReload=/home/myapp51/.rbenv/bin/rbenv exec bundle exec pumactl -F /home/deployer/railsapps/chucky-template/current/config/production/puma.rb phased-restart
+ExecReload=/home/deployer/.rbenv/bin/rbenv exec bundle exec pumactl -F /home/deployer/railsapps/chucky-template/current/config/puma/production/puma.rb phased-restart
 
 TimeoutSec=15
 Restart=always
