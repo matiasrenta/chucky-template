@@ -251,6 +251,9 @@ sudo service puma-chucky-template stop
 sudo service puma-chucky-template restart
 sudo service puma-chucky-template status
 
+para ver el log por si el status es inactive:
+journalctl -xe
+
 para ver los procesos de puma:
 ps aux | grep puma
 
