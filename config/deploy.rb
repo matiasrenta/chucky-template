@@ -48,6 +48,8 @@ set :linked_dirs, %w{uploads log tmp/pids tmp/cache tmp/sockets vendor/bundle pu
 # Default value for keep_releases is 5
 set :keep_releases, 2
 
+set :bundle_flags, '--deployment --quiet --local'
+
 namespace :deploy do
 
   #before  'deploy:assets:precompile', 'deploy:migrate'
