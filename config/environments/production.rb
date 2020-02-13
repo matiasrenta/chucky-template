@@ -82,9 +82,11 @@ Rails.application.configure do
       :password => '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',
       :domain => 'chucky.ml',
       :address => 'smtp.sendgrid.net',
-      :port => 465,
+      :port => '465',
       :authentication => :plain,
-      :enable_starttls_auto => true
+      :enable_starttls_auto => true,
+      :ssl => true,
+      :tls => true
   }
 
   config.action_mailer.default_options = {
