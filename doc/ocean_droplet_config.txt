@@ -302,3 +302,5 @@ $HOME/.rbenv/bin/rbenv exec bundle exec pumactl -S /home/deployer/railsapps/dogs
 gem install libv8 -v '3.16.14.19' -- --with-system-v8
 
 libv8-3.16.14.13-x86_64-linux
+
+sudo certbot --nginx -d chucky.ml -d www.chucky.ml -d puma.chucky.ml
