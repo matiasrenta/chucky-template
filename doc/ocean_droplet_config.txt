@@ -294,3 +294,8 @@ WantedBy=multi-user.target
 
 
 $HOME/.rbenv/bin/rbenv exec bundle exec pumactl -S /home/deployer/railsapps/dogstribuidora/shared/tmp/pids/puma.state -F /home/deployer/railsapps/dogstribuidora/shared/puma.rb restart
+
+
+gem install libv8 -v '3.16.14.19' -- --with-system-v8
+
+libv8-3.16.14.13-x86_64-linux
