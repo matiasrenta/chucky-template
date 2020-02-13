@@ -79,11 +79,18 @@ namespace :deploy do
   #  end
   #end
 
+  #desc 'Restart application'
+  #task :restart do
+  #  on roles(:app), in: :sequence, wait: 5 do
+  #    # Your restart mechanism here, for example:
+  #    execute :touch, release_path.join('tmp/restart.txt')
+  #  end
+  #end
+
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
+    on roles(:app) do
+      execute "#{fetch(:rbenv_prefix)} pumactl -P ~/railsapps/chucky-template/current/tmp/pids/puma.pid phased-restart"
     end
   end
 
