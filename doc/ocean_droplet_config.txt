@@ -229,6 +229,7 @@ github: https://github.com/puma/puma
 links para systemd:
    https://github.com/puma/puma/blob/master/docs/systemd.md
    https://prograils.com/posts/capistrano-deploy-to-ubuntu-with-systemd-nginx-puma-and-rbenv
+   creo que es para que que se restartee puma cada 6 horas: https://github.com/codetriage/codetriage/blob/master/config/puma.rb
 
 links para usarlo con capistrano:
    https://prograils.com/posts/capistrano-deploy-to-ubuntu-with-systemd-nginx-puma-and-rbenv
@@ -238,6 +239,7 @@ https://github.com/puma/puma/blob/master/docs/systemd.md
 
 este link explica mucho, es una escuela en Eroku: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#adding-puma-to-your-application
 
+este link es de linux systemd, profundo sobre systemd: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 
 
 archivos importantes:
@@ -272,6 +274,15 @@ estos arranque los hace capistrano si configuro workers = 0, es decir, qe no est
 /home/deployer/.rbenv/bin/rbenv exec bundle exec pumactl -S /home/deployer/railsapps/dogstribuidora/shared/tmp/pids/puma.state -F /home/deployer/railsapps/dogstribuidora/shared/puma.rb start
 /home/deployer/.rbenv/bin/rbenv exec bundle exec pumactl -S /home/deployer/railsapps/dogstribuidora/shared/tmp/pids/puma.state -F /home/deployer/railsapps/dogstribuidora/shared/puma.rb stop
 
+(-)
+
+(+) SEND EMAIL. El gran tema para no caer al spam
+en esta pagina la respuesta es muy buena:
+https://www.digitalocean.com/community/questions/how-to-send-emails-using-droplets
+
+los links de esa pagiina son:
+para testear como te ven los servidores: http://www.mail-tester.com
+para ver no se que de los blacklist: http://whatismyipaddress.com/blacklist-check
 (-)
 
 
