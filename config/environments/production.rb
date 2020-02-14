@@ -67,15 +67,28 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: ENV['DOMAIN_OR_SUBDOMAIN'] }
   config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #    openssl_verify_mode: OpenSSL::SSL::VERIFY_NONE,
+  #    address: 'localhost',
+  #    port: 25,
+  #    domain: ENV['DOMAIN_OR_SUBDOMAIN'],
+  #    user_name: nil, #NOREPLY_MAIL,
+  #    password: nil #NOREPLY_PASS,
+  #    #:authentication  => :login
+  #}
+
   config.action_mailer.smtp_settings = {
-      openssl_verify_mode: OpenSSL::SSL::VERIFY_NONE,
-      address: 'localhost',
-      port: 25,
-      domain: ENV['DOMAIN_OR_SUBDOMAIN'],
-      user_name: nil, #NOREPLY_MAIL,
-      password: nil #NOREPLY_PASS,
-      #:authentication  => :login
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :domain => 'chucky.ml',
+      :address => 'smtp.sendgrid.net',
+      :port => '465',
+      :authentication => :plain,
+      :enable_starttls_auto => true,
+      :ssl => true,
+      :tls => true
   }
+
   config.action_mailer.default_options = {
       from: %{"#{ENV['ACTION_MAILER_FRIENDLY_FROM']}" <noreply@#{ENV['DOMAIN_OR_SUBDOMAIN']}>},
       content_type: "text/html"

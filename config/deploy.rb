@@ -1,16 +1,17 @@
 # config valid only for Capistrano 3.1
-lock '3.1.0'
+lock '3.7.2'
 
 require 'seed-fu/capistrano3'
 
-set :application, 'cuauh'
-set :repo_url, 'git@github.com:matiasrenta/cuauh.git'
+set :application, 'chucky-template'
+set :repo_url, 'git@github.com:matiasrenta/chucky-template.git'
+set :branch, 'puma' # change branch as needed
 
 # Default branch is :master
 #ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/deployer/railsapps/cuauh'
+set :deploy_to, '/home/deployer/railsapps/chucky-template'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -23,6 +24,14 @@ set :deploy_to, '/home/deployer/railsapps/cuauh'
 
 # Default value for :pty is false
 # set :pty, true
+
+
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+#set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+#set :rbenv_roles, :all # default value
+
 
 # para que bundle no interfiera con el directorio bin/ de esta forma se baja del github lo que haya en el bin (ademas lo quite del linked_dirs)
 set :bundle_binstubs, nil
@@ -38,6 +47,8 @@ set :linked_dirs, %w{uploads log tmp/pids tmp/cache tmp/sockets vendor/bundle pu
 
 # Default value for keep_releases is 5
 set :keep_releases, 2
+
+set :bundle_flags, '--deployment'
 
 namespace :deploy do
 
@@ -68,11 +79,21 @@ namespace :deploy do
   #  end
   #end
 
-  desc 'Restart application'
+  #desc 'Restart application'
+  #task :restart do
+  #  on roles(:app), in: :sequence, wait: 5 do
+  #    # Your restart mechanism here, for example:
+  #    execute :touch, release_path.join('tmp/restart.txt')
+  #  end
+  #end
+
+  desc 'Restart application by restarting puma service'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
+    on roles(:app) do
+      server_command = "/home/deployer/.rbenv/bin/rbenv exec bundle exec pumactl -F /home/deployer/railsapps/chucky-template/shared/puma.rb phased-restart"
+      app_current = '/home/deployer/railsapps/chucky-template/current'
+      execute "cd '#{app_current}'; #{server_command}"
+      #execute "sudo service puma-chucky-template restart"
     end
   end
 

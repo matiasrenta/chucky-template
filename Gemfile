@@ -1,3 +1,5 @@
+ruby File.read(File.expand_path('../.ruby-version', __FILE__)).chomp
+
 #require 'refile/simple_form'
 
 source 'https://rubygems.org'
@@ -145,11 +147,9 @@ gem 'attribute_normalizer' #proyecto_inversion en key_analytical se cambia de ni
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 group :development do
-  gem 'capistrano', '~> 3.1.0'
+  #gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano', '~> 3.7.0'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.6'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
@@ -168,4 +168,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'letter_opener'
+end
+
+group :production do
+  gem 'puma', '4.3.1'
 end
