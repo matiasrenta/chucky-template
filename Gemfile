@@ -147,9 +147,6 @@ gem 'attribute_normalizer' #proyecto_inversion en key_analytical se cambia de ni
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 group :development do
   #gem 'capistrano', '~> 3.1.0'
   gem 'capistrano', '~> 3.7.0'
