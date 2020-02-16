@@ -90,7 +90,7 @@ gem 'jquery-turbolinks'
 gem 'bootstrap-sass', '~> 3.3.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'font-awesome-sass', '~> 4.3.0'
+gem 'font-awesome-sass', '~> 4.3.0' # ver iconos en https://fontawesome.com/v4.7.0/icons/
 
 # para shortcut de sass (usado en el smartAdmin them)
 #gem 'compass-rails'
