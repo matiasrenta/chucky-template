@@ -8,7 +8,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   # GET <%= route_url %>
   def index
-    @<%= plural_table_name %> = do_index(<%= class_name %>, params)
+    @<%= plural_table_name %> = indexize(<%= class_name %>)
   end
 
   # GET <%= route_url %>/1
@@ -25,7 +25,6 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   # POST <%= route_url %>
   def create
-
     if @<%= orm_instance.save %>
       redirect_to @<%= singular_table_name %>, notice: t("simple_form.flash.successfully_created")
     else
