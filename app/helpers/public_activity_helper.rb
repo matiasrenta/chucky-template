@@ -26,7 +26,13 @@ module PublicActivityHelper
     label = activity.parameters[:model_label]
     if activity.trackable
       if can?(:read, activity.trackable)
-        link_to label, activity.trackable
+        begin
+          path = eval("#{activity.trackable_type.underscore}_path(activity.trackable)")
+          Rails.application.routes.recognize_path(path, method: :get) # si no existe el route va al rescue y devuelve solo el label
+          link_to label, activity.trackable
+        rescue
+          label
+        end
       else
         label
       end
@@ -34,7 +40,6 @@ module PublicActivityHelper
       with_not_exists ? "#{label} <em>(ya no existe)</em>".html_safe : label
     end
   end
-
 
   def trackable_history(activity)
     "/public_activity?q[trackable_type_eq]=#{activity.trackable_type}&q[trackable_id_eq]=#{activity.trackable_id}"
